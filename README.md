@@ -86,7 +86,45 @@ TechStore/
 - Сортировка по цене (по возрастанию / убыванию)
 - Пагинация  8 товаров на страницу
 - Кнопки  и  прямо в карточке товара
+```html
+<!-- Боковая панель фильтров -->
+<aside class="sidebar" id="sidebar">
+    <h3>Категории</h3>
+    <ul class="category-list">
+        <li><a href="#" data-category="all" class="active">Все товары</a></li>
+        <li><a href="#" data-category="phones">Сотовые телефоны</a></li>
+        <li><a href="#" data-category="laptops">Ноутбуки</a></li>
+        <li><a href="#" data-category="accessories">Аксессуары</a></li>
+    </ul>
+    <div class="filters">
+        <h3>Фильтры</h3>
+        <div class="form-group">
+            <label for="search">Поиск:</label>
+            <input type="text" id="search" placeholder="Введите название...">
+        </div>
+        <div class="form-group">
+            <label for="sort">Сортировка:</label>
+            <select id="sort">
+                <option value="">По умолчанию</option>
+                <option value="asc">Цена: по возрастанию</option>
+                <option value="desc">Цена: по убыванию</option>
+            </select>
+        </div>
+    </div>
+</aside>
 
+<!-- Сетка товаров и пагинация -->
+<div class="content">
+    <h2>Каталог товаров</h2>
+    <div class="products-grid" id="productsGrid"></div>
+    <div class="pagination" id="pagination"></div>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="catalog.js"></script>
+<script src="auth.js"></script>
+```
 ---
 </details>
 
@@ -103,6 +141,20 @@ TechStore/
 - Отображение сетки сохранённых товаров
 - Удаление товара из избранного
 - Быстрое добавление в корзину без перехода в каталог
+
+```html
+<!-- Основной контент -->
+<div class="content">
+    <h2>Избранное</h2>
+    <div class="products-grid" id="favoritesGrid"></div>
+    <p class="empty-message" id="emptyFavorites" style="display: none;">Список избранного пуст</p>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="favorites.js"></script>
+<script src="auth.js"></script>
+```
 
 ---
 </details>
@@ -122,7 +174,34 @@ TechStore/
 - Удаление отдельных позиций
 - Автоматический пересчёт итоговой суммы
 - Кнопка Оформить заказ  переход на `checkout.html`
+```html
+<!-- Таблица корзины -->
+<div class="cart-container">
+    <table class="cart-table" id="cartTable">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody id="cartTableBody"></tbody>
+    </table>
+    <div class="cart-total">
+        <h3>Общая сумма: <span id="totalPrice">0</span> ₽</h3>
+        <a href="checkout.html" class="btn btn-primary" id="checkoutBtn">Оформить заказ</a>
+    </div>
+</div>
+<p class="empty-message" id="emptyCart" style="display: none;">Корзина пуста</p>
 
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="auth.js"></script>
+```
 ---
 </details>
 
@@ -139,7 +218,31 @@ TechStore/
 - Форма с полями: имя, телефон, адрес доставки
 - Просмотр итоговой суммы перед подтверждением
 - Сохранение заказа в `localStorage`  переход в профиль
+```html
+<!-- Форма оформления заказа -->
+<div class="checkout-form-section">
+    <h3>Данные покупателя</h3>
+    <form id="checkoutForm" class="checkout-form">
+        <div class="form-group">
+            <label for="fullName">ФИО *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Иванов Иван Иванович">
+        </div>
+        <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+        </div>
+    </form>
+</div>
 
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="checkout.js"></script>
+<script src="auth.js"></script>
+```
 ---
 </details>
 
@@ -158,6 +261,33 @@ TechStore/
 - Текущее содержимое корзины
 - Кнопка выхода из аккаунта
 
+```html
+<!-- Разделы личного кабинета -->
+<div class="profile-content">
+    <div class="profile-section">
+        <h3>История заказов</h3>
+        <div id="orderHistory">
+            <p class="empty-message">История заказов пуста</p>
+        </div>
+    </div>
+    <div class="profile-section">
+        <h3>Избранные товары (<span id="profileFavCount">0</span>)</h3>
+        <div class="products-grid" id="profileFavorites"></div>
+    </div>
+    <div class="profile-section">
+        <h3>Текущая корзина</h3>
+        <div id="profileCart">
+            <p class="empty-message">Корзина пуста</p>
+        </div>
+    </div>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="profile.js"></script>
+<script src="auth.js"></script>
+```
+
 ---
 </details>
 
@@ -172,6 +302,31 @@ TechStore/
 
 Содержит: описание магазина, преимущества, статистику (товаров, брендов, клиентов).
 
+```html
+<!-- Контент страницы «О нас» -->
+<div class="about-content">
+    <p>Добро пожаловать в TechStore - ваш надежный партнер в мире электроники!</p>
+    <p>Мы предлагаем широкий ассортимент качественной техники по доступным ценам:</p>
+    <ul>
+        <li>Сотовые телефоны от ведущих производителей</li>
+        <li>Ноутбуки для работы и развлечений</li>
+        <li>Аксессуары для ваших устройств</li>
+    </ul>
+    <p>Наши преимущества:</p>
+    <ul>
+        <li>✓ Гарантия качества на всю продукцию</li>
+        <li>✓ Быстрая доставка по всей России</li>
+        <li>✓ Профессиональная консультация</li>
+        <li>✓ Доступные цены</li>
+    </ul>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="auth.js"></script>
+```
+
 ---
 </details>
 
@@ -185,6 +340,33 @@ TechStore/
 **Подключает:** `common.js`
 
 Содержит: адрес, телефон, email, форму обратной связи.
+
+```html
+<!-- Контактная информация -->
+<div class="contacts-content">
+    <div class="contact-item">
+        <h3>Адрес:</h3>
+        <p>г. Москва, ул. Примерная, д. 123</p>
+    </div>
+    <div class="contact-item">
+        <h3>Телефон:</h3>
+        <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+    </div>
+    <div class="contact-item">
+        <h3>Email:</h3>
+        <p><a href="mailto:info@techstore.ru">info@techstore.ru</a></p>
+    </div>
+    <div class="contact-item">
+        <h3>Режим работы:</h3>
+        <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+    </div>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="auth.js"></script>
+```
 
 ---
 </details>
@@ -204,6 +386,41 @@ TechStore/
 - Товаров в корзинах пользователей
 - Товаров в избранном
 
+```html
+<!-- Статистические карточки -->
+<div class="admin-stats">
+    <div class="stat-card">
+        <h3>Всего товаров</h3>
+        <p class="stat-value" id="totalProducts">0</p>
+    </div>
+    <div class="stat-card">
+        <h3>Заказано товаров</h3>
+        <p class="stat-value" id="totalOrdered">0</p>
+    </div>
+    <div class="stat-card">
+        <h3>В корзинах</h3>
+        <p class="stat-value" id="totalInCart">0</p>
+    </div>
+    <div class="stat-card">
+        <h3>В избранном</h3>
+        <p class="stat-value" id="totalInFavorites">0</p>
+    </div>
+    <div class="stat-card warning">
+        <h3>Товары заканчиваются</h3>
+        <p class="stat-value" id="lowStock">0</p>
+    </div>
+    <div class="stat-card danger">
+        <h3>Нет в наличии</h3>
+        <p class="stat-value" id="outOfStock">0</p>
+    </div>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="admin.js"></script>
+<script src="auth.js"></script>
+```
+
 ---
 </details>
 
@@ -217,6 +434,32 @@ TechStore/
 **Подключает:** `data.js`, `common.js`, `admin-products.js`
 
 **Функции:** полная таблица с ID, названием, категорией, ценой, статистикой продаж.
+
+```html
+<!-- Таблица товаров -->
+<div class="admin-table-container">
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название товара</th>
+                <th>Категория</th>
+                <th>Цена</th>
+                <th>В корзине</th>
+                <th>В избранном</th>
+                <th>Заказано</th>
+                <th>Куплено</th>
+            </tr>
+        </thead>
+        <tbody id="adminTableBody"></tbody>
+    </table>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="admin-products.js"></script>
+<script src="auth.js"></script>
+```
 
 ---
 </details>
@@ -232,6 +475,17 @@ TechStore/
 
 **Функции:** таблица заказов с датой, пользователем, составом и суммой.
 
+```html
+<!-- Контейнер для рендера заказов (заполняется через admin-orders.js) -->
+<div id="ordersContainer"></div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="admin-orders.js"></script>
+<script src="common.js"></script>
+<script src="auth.js"></script>
+```
+
 ---
 </details>
 
@@ -245,7 +499,58 @@ TechStore/
 **Подключает:** `data.js`, `common.js`, `admin-categories.js`
 
 **Разделы:**  Телефоны   Ноутбуки   Аксессуары
+```html
+<!-- Три таблицы по категориям -->
+<div class="category-section">
+    <h3>Сотовые телефоны</h3>
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Название</th><th>Цена</th>
+                    <th>В корзине</th><th>В избранном</th><th>Заказано</th>
+                </tr>
+            </thead>
+            <tbody id="phonesTable"></tbody>
+        </table>
+    </div>
+</div>
 
+<div class="category-section">
+    <h3>Ноутбуки</h3>
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Название</th><th>Цена</th>
+                    <th>В корзине</th><th>В избранном</th><th>Заказано</th>
+                </tr>
+            </thead>
+            <tbody id="laptopsTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="category-section">
+    <h3>Аксессуары</h3>
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th><th>Название</th><th>Цена</th>
+                    <th>В корзине</th><th>В избранном</th><th>Заказано</th>
+                </tr>
+            </thead>
+            <tbody id="accessoriesTable"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Подключаемые скрипты -->
+<script src="data.js"></script>
+<script src="admin-categories.js"></script>
+<script src="auth.js"></script>
+```
 ---
 </details>
 
