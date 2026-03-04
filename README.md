@@ -1,99 +1,69 @@
-﻿<div align="center">
+﻿# react_mag1  TechStore Vanilla JS
 
-#  TechStore
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
+[![localStorage](https://img.shields.io/badge/Storage-localStorage-22c55e)](https://developer.mozilla.org/docs/Web/API/Window/localStorage)
 
-### Интернет-магазин электроники
-
-*Многостраничное приложение на чистом JavaScript  без фреймворков, без сборщиков*
-
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/docs/Web/JavaScript)
-[![localStorage](https://img.shields.io/badge/Storage-localStorage-22c55e?style=for-the-badge)](https://developer.mozilla.org/docs/Web/API/Window/localStorage)
-
-</div>
+> Полноценный многостраничный интернет-магазин электроники на **чистом Vanilla JS  без фреймворков, без сборщиков**.  
+> Все данные хранятся в `localStorage`; синхронизация страниц происходит без сервера.
+>
+> **GitHub:** https://github.com/Comanda7/react_mag1
 
 ---
 
-##  Содержание
+## Стек технологий
 
-- [О проекте](#-о-проекте)
-- [Функционал](#-функционал)
-- [Структура проекта](#-структура-проекта)
-- [Описание файлов](#-описание-файлов)
-  - [HTML страницы](#html-страницы)
-  - [JavaScript модули](#javascript-модули)
-  - [CSS стили](#css-стили)
-- [Технологии](#-технологии)
-- [Запуск](#-запуск)
-- [Данные](#-данные)
+| Слой             | Технология                                  |
+|------------------|---------------------------------------------|
+| Разметка         | HTML5 (отдельный `.html` на каждую страницу)|
+| Стили            | Vanilla CSS (один `styles.css`)             |
+| Логика           | JavaScript ES6+ (модули через `<script>`)   |
+| Хранилище данных | localStorage (CRUD в `data.js`)             |
+| Сборщик/бандлер  | Не требуется                                |
+| Роутинг          | Обычные HTML-ссылки (`<a href="...">`)      |
 
 ---
 
-##  О проекте
-
-**TechStore**  полноценный интернет-магазин электроники, реализованный как многостраничное
-приложение с разделением кода по модулям.
-
-Все данные хранятся в `localStorage` браузера и синхронизируются между страницами в реальном
-времени  без сервера, без базы данных, без сборки.
-
----
-
-##  Функционал
-
-| Раздел | Возможности |
-|--------|-------------|
-| **Каталог** | Фильтрация по категориям, поиск, сортировка по цене, пагинация (8 шт./стр.) |
-| **Избранное** | Добавление / удаление, перенос в корзину |
-| **Корзина** | Управление количеством (+/), удаление позиций, пересчёт суммы |
-| **Заказ** | Оформление с формой доставки, сохранение в историю |
-| **Профиль** | История заказов, список избранного, текущая корзина |
-| **Аутентификация** | Регистрация / вход / выход через `localStorage` |
-| **Админ-панель** | Статистика, таблицы товаров, заказов, категорий |
-
----
-
-##  Структура проекта
+## Структура проекта
 
 ```
 TechStore/
-│
-├── 📄 HTML страницы
-│   ├── index.html ──────────────── Каталог товаров (главная)
-│   ├── favorites.html ──────────── Избранные товары
-│   ├── cart.html ───────────────── Корзина покупок
-│   ├── checkout.html ───────────── Оформление заказа
-│   ├── profile.html ────────────── Личный кабинет
-│   ├── about.html ──────────────── О нас
-│   ├── contacts.html ───────────── Контакты
-│   │
-│   └── 🔐 Админ-панель
-│       ├── admin.html ──────────── Общая статистика
-│       ├── admin-products.html ─── Таблица всех товаров
-│       ├── admin-orders.html ────── История заказов
-│       └── admin-categories.html ── Статистика по категориям
-│
-├── 📜 JavaScript модули
-│   ├── data.js ─────────────────── Данные + CRUD для localStorage
-│   ├── common.js ───────────────── Шапка, бургер, счётчики
-│   ├── catalog.js ──────────────── Фильтры, поиск, пагинация
-│   ├── favorites.js ────────────── Логика избранного
-│   ├── cart.js ─────────────────── Логика корзины
-│   ├── checkout.js ─────────────── Оформление заказа
-│   ├── profile.js ──────────────── Личный кабинет
-│   ├── auth.js ─────────────────── Регистрация и авторизация
-│   ├── admin.js ────────────────── Статистика админки
-│   ├── admin-products.js ───────── Таблица товаров
-│   ├── admin-orders.js ─────────── Таблица заказов
-│   ├── admin-stock.js ──────────── Остатки на складе
-│   └── admin-categories.js ─────── Таблицы по категориям
-│
-└── 🎨 CSS
-    └── styles.css ──────────────── Все стили приложения
+  HTML страницы
+    index.html  Каталог товаров (главная)
+    favorites.html  Избранные товары
+    cart.html  Корзина покупок
+    checkout.html  Оформление заказа
+    profile.html  Личный кабинет
+    about.html  О нас
+    contacts.html  Контакты
+   
+     Админ-панель
+        admin.html  Общая статистика
+        admin-products.html  Таблица всех товаров
+        admin-orders.html  История заказов
+        admin-categories.html  Статистика по категориям
+
+  JavaScript модули
+    data.js  Данные + CRUD для localStorage
+    common.js  Шапка, бургер, счётчики
+    catalog.js  Фильтры, поиск, пагинация
+    favorites.js  Логика избранного
+    cart.js  Логика корзины
+    checkout.js  Оформление заказа
+    profile.js  Личный кабинет
+    auth.js  Регистрация и авторизация
+    admin.js  Статистика админки
+    admin-products.js  Таблица товаров
+    admin-orders.js  Таблица заказов
+    admin-stock.js  Остатки на складе
+    admin-categories.js  Таблицы по категориям
+
+  CSS
+     styles.css  Все стили приложения
 ```
 
-> **Кликните на название файла ниже, чтобы перейти к его описанию** 
+> Кликайте на имя файла ниже, чтобы увидеть его описание и код 
 
 ---
 
@@ -102,13 +72,13 @@ TechStore/
 ### HTML страницы
 
 <details>
-<summary><a name="file-index-html"></a><b> index.html</b>  Каталог товаров (главная страница)</summary>
+<summary><a name="index-html"></a><b> index.html</b>  каталог товаров (главная страница)</summary>
 
 ---
 
 Главная страница магазина. Отображает карточки товаров с фильтрацией, поиском и пагинацией.
 
-**Подключает:** `catalog.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `catalog.js`
 
 **Функции страницы:**
 - Фильтрация по 3 категориям: телефоны, ноутбуки, аксессуары
@@ -121,13 +91,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-favorites-html"></a><b> favorites.html</b>  Список избранных товаров</summary>
+<summary><a name="favorites-html"></a><b> favorites.html</b>  список избранных товаров</summary>
 
 ---
 
 Страница с товарами, добавленными в избранное.
 
-**Подключает:** `favorites.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `favorites.js`
 
 **Функции страницы:**
 - Отображение сетки сохранённых товаров
@@ -138,13 +108,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-cart-html"></a><b> cart.html</b>  Корзина покупок</summary>
+<summary><a name="cart-html"></a><b> cart.html</b>  корзина покупок</summary>
 
 ---
 
 Страница корзины с таблицей выбранных товаров.
 
-**Подключает:** `cart.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `cart.js`
 
 **Функции страницы:**
 - Таблица товаров с изображениями и ценами
@@ -157,13 +127,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-checkout-html"></a><b> checkout.html</b>  Оформление заказа</summary>
+<summary><a name="checkout-html"></a><b> checkout.html</b>  оформление заказа</summary>
 
 ---
 
 Страница оформления заказа с формой данных доставки.
 
-**Подключает:** `checkout.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `checkout.js`
 
 **Функции страницы:**
 - Форма с полями: имя, телефон, адрес доставки
@@ -174,13 +144,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-profile-html"></a><b> profile.html</b>  Личный кабинет</summary>
+<summary><a name="profile-html"></a><b> profile.html</b>  личный кабинет</summary>
 
 ---
 
 Личный кабинет авторизованного пользователя.
 
-**Подключает:** `profile.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `profile.js`
 
 **Функции страницы:**
 - История всех оформленных заказов с детализацией по товарам
@@ -192,7 +162,7 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-about-html"></a><b> about.html</b>  О нас</summary>
+<summary><a name="about-html"></a><b>ℹ about.html</b>  о нас</summary>
 
 ---
 
@@ -206,7 +176,7 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-contacts-html"></a><b> contacts.html</b>  Контакты</summary>
+<summary><a name="contacts-html"></a><b> contacts.html</b>  контакты</summary>
 
 ---
 
@@ -220,13 +190,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-admin-html"></a><b> admin.html</b>  Дашборд администратора</summary>
+<summary><a name="admin-html"></a><b> admin.html</b>  дашборд администратора</summary>
 
 ---
 
 Главная страница панели администратора с общей статистикой.
 
-**Подключает:** `admin.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `admin.js`
 
 **Отображает:**
 - Всего товаров в каталоге
@@ -238,13 +208,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-admin-products-html"></a><b> admin-products.html</b>  Управление товарами</summary>
+<summary><a name="admin-products-html"></a><b> admin-products.html</b>  управление товарами</summary>
 
 ---
 
 Детальная таблица всех товаров магазина.
 
-**Подключает:** `admin-products.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `admin-products.js`
 
 **Функции:** полная таблица с ID, названием, категорией, ценой, статистикой продаж.
 
@@ -252,13 +222,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-admin-orders-html"></a><b> admin-orders.html</b>  История заказов</summary>
+<summary><a name="admin-orders-html"></a><b> admin-orders.html</b>  история заказов</summary>
 
 ---
 
 Полная история заказов всех пользователей.
 
-**Подключает:** `admin-orders.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `admin-orders.js`
 
 **Функции:** таблица заказов с датой, пользователем, составом и суммой.
 
@@ -266,13 +236,13 @@ TechStore/
 </details>
 
 <details>
-<summary><a name="file-admin-categories-html"></a><b> admin-categories.html</b>  Категории</summary>
+<summary><a name="admin-categories-html"></a><b> admin-categories.html</b>  категории</summary>
 
 ---
 
 Три отдельные таблицы по категориям товаров.
 
-**Подключает:** `admin-categories.js`, `common.js`
+**Подключает:** `data.js`, `common.js`, `admin-categories.js`
 
 **Разделы:**  Телефоны   Ноутбуки   Аксессуары
 
@@ -284,7 +254,7 @@ TechStore/
 ### JavaScript модули
 
 <details>
-<summary><a name="file-data-js"></a><b> data.js</b>  Центральный модуль данных</summary>
+<summary><a name="data-js"></a><b> data.js</b>  центральный модуль данных</summary>
 
 ---
 
@@ -293,26 +263,21 @@ TechStore/
 **Данные:** массив из **60 товаров** (по 20 в каждой категории). Каждый товар: `id`, `name`, `category`, `price`, `image`, `stock`.
 
 ```js
-// Данные товаров
 const products = [
-    // Сотовые телефоны (20 товаров)
-    { id: 1,  name: 'iPhone 15 Pro',      category: 'phones',      price: 129990, image: '📱', stock: 15 },
-    { id: 2,  name: 'Samsung Galaxy S24', category: 'phones',      price:  89990, image: '📱', stock: 20 },
+    { id: 1,  name: 'iPhone 15 Pro',      category: 'phones',      price: 129990, image: '', stock: 15 },
+    { id: 2,  name: 'Samsung Galaxy S24', category: 'phones',      price:  89990, image: '', stock: 20 },
     // ...
-    { id: 21, name: 'MacBook Pro 16"',    category: 'laptops',     price: 249990, image: '💻', stock:  8 },
+    { id: 21, name: 'MacBook Pro 16"',    category: 'laptops',     price: 249990, image: '', stock:  8 },
     // ...
-    { id: 41, name: 'AirPods Pro 2',      category: 'accessories', price:  24990, image: '🎧', stock: 50 },
+    { id: 41, name: 'AirPods Pro 2',      category: 'accessories', price:  24990, image: '', stock: 50 },
     // ...60 позиций
-];
+]
 
-// CRUD для localStorage
-function getCart()      { return JSON.parse(localStorage.getItem('cart')      || '[]') }
-function saveCart(c)    { localStorage.setItem('cart', JSON.stringify(c)) }
-function getFavorites() { return JSON.parse(localStorage.getItem('favorites') || '[]') }
-function saveFavorites(f){ localStorage.setItem('favorites', JSON.stringify(f)) }
+function getCart()        { return JSON.parse(localStorage.getItem('cart')      || '[]') }
+function saveCart(c)      { localStorage.setItem('cart', JSON.stringify(c)) }
+function getFavorites()   { return JSON.parse(localStorage.getItem('favorites') || '[]') }
+function saveFavorites(f) { localStorage.setItem('favorites', JSON.stringify(f)) }
 function getOrderHistory(){ return JSON.parse(localStorage.getItem('orderHistory') || '[]') }
-function getProductStats(){ return JSON.parse(localStorage.getItem('productStats') || JSON.stringify(initProductStats())) }
-function saveProductStats(s){ localStorage.setItem('productStats', JSON.stringify(s)) }
 ```
 
 **CRUD-функции:**
@@ -329,41 +294,38 @@ function saveProductStats(s){ localStorage.setItem('productStats', JSON.stringif
 </details>
 
 <details>
-<summary><a name="file-common-js"></a><b> common.js</b>  Общий код для всех страниц</summary>
+<summary><a name="common-js"></a><b> common.js</b>  общий код для всех страниц</summary>
 
 ---
 
 Подключается на каждой странице. Отвечает за общие UI-элементы: шапка, счётчики, бургер-меню, кнопка выхода.
 
 ```js
-// Обновление счётчиков корзины и избранного в шапке
 function updateBadges() {
-    const cart      = getCart();
-    const favorites = getFavorites();
-    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const cart      = getCart()
+    const favorites = getFavorites()
+    const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
 
-    const cartBadge = document.getElementById('cartBadge');
-    const favBadge  = document.getElementById('favBadge');
+    const cartBadge = document.getElementById('cartBadge')
+    const favBadge  = document.getElementById('favBadge')
 
-    if (cartBadge) cartBadge.textContent = cartCount > 0 ? cartCount : '';
-    if (favBadge)  favBadge.textContent  = favorites.length > 0 ? favorites.length : '';
+    if (cartBadge) cartBadge.textContent = cartCount > 0 ? cartCount : ''
+    if (favBadge)  favBadge.textContent  = favorites.length > 0 ? favorites.length : ''
 }
 
-// Создание карточки товара (используется в catalog.js, favorites.js)
 function createProductCard(product) {
-    const favorites = getFavorites();
-    const isFav     = favorites.includes(product.id);
+    const isFav = getFavorites().includes(product.id)
     return `
         <div class="product-card">
             <div class="product-image">${product.image}</div>
             <h3>${product.name}</h3>
             <p class="product-price">${product.price.toLocaleString('ru-RU')} ₽</p>
             <div class="product-actions">
-                <button onclick="toggleFavorite(${product.id})">${isFav ? '❤️' : '🤍'}</button>
-                <button onclick="addToCart(${product.id})">🛒 В корзину</button>
+                <button onclick="toggleFavorite(${product.id})">${isFav ? '' : ''}</button>
+                <button onclick="addToCart(${product.id})"> В корзину</button>
             </div>
         </div>
-    `;
+    `
 }
 ```
 
@@ -371,49 +333,38 @@ function createProductCard(product) {
 </details>
 
 <details>
-<summary><a name="file-catalog-js"></a><b> catalog.js</b>  Логика каталога</summary>
+<summary><a name="catalog-js"></a><b> catalog.js</b>  логика каталога</summary>
 
 ---
 
 Вся бизнес-логика главной страницы: фильтрация, поиск, сортировка, пагинация (8 шт./стр.), рендер карточек через `innerHTML`.
 
 ```js
-let currentPage     = 1;
-const itemsPerPage  = 8;
-let currentCategory = 'all';
-let searchQuery     = '';
-let sortOrder       = '';
+let currentPage     = 1
+const itemsPerPage  = 8
+let currentCategory = 'all'
+let searchQuery     = ''
+let sortOrder       = ''
 
 function getFilteredProducts() {
-    let filtered = products;
+    let filtered = products
     if (currentCategory !== 'all')
-        filtered = filtered.filter(p => p.category === currentCategory);
+        filtered = filtered.filter(p => p.category === currentCategory)
     if (searchQuery)
-        filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    if (sortOrder === 'asc')  filtered = [...filtered].sort((a, b) => a.price - b.price);
-    if (sortOrder === 'desc') filtered = [...filtered].sort((a, b) => b.price - a.price);
-    return filtered;
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    if (sortOrder === 'asc')  filtered = [...filtered].sort((a, b) => a.price - b.price)
+    if (sortOrder === 'desc') filtered = [...filtered].sort((a, b) => b.price - a.price)
+    return filtered
 }
 
 function renderProducts() {
-    const filtered   = getFilteredProducts();
-    const totalPages = Math.ceil(filtered.length / itemsPerPage);
-    const start      = (currentPage - 1) * itemsPerPage;
-    const pageItems  = filtered.slice(start, start + itemsPerPage);
-
+    const filtered   = getFilteredProducts()
+    const totalPages = Math.ceil(filtered.length / itemsPerPage)
+    const start      = (currentPage - 1) * itemsPerPage
+    const pageItems  = filtered.slice(start, start + itemsPerPage)
     document.getElementById('productsGrid').innerHTML =
-        pageItems.map(p => createProductCard(p)).join('');
-    renderPagination(totalPages);
-}
-
-function renderPagination(totalPages) {
-    const el = document.getElementById('pagination');
-    if (totalPages <= 1) { el.innerHTML = ''; return; }
-    el.innerHTML = `
-        <button ${currentPage===1?'disabled':''} onclick="goToPage(${currentPage-1})">&lt;</button>
-        <button class="active">${currentPage} / ${totalPages}</button>
-        <button ${currentPage===totalPages?'disabled':''} onclick="goToPage(${currentPage+1})">&gt;</button>
-    `;
+        pageItems.map(p => createProductCard(p)).join('')
+    renderPagination(totalPages)
 }
 ```
 
@@ -421,11 +372,11 @@ function renderPagination(totalPages) {
 </details>
 
 <details>
-<summary><a name="file-auth-js"></a><b> auth.js</b>  Аутентификация</summary>
+<summary><a name="auth-js"></a><b> auth.js</b>  аутентификация</summary>
 
 ---
 
-Полная система авторизации через `localStorage`. Инжектирует модальное окно входа/регистрации в DOM.
+Полная система авторизации через `localStorage`. Инжектирует модальное окно входа/регистрации в DOM через IIFE.
 
 ```js
 ;(function () {
@@ -451,61 +402,58 @@ function renderPagination(totalPages) {
   }
 
   function authLogout() { localStorage.removeItem('auth_user') }
-
-  // Модальное окно вставляется в body через innerHTML
-  // Кнопка «Войти» / имя пользователя добавляются в шапку
 })()
 ```
+
+> Засев администратора (`admin@techstore.ru` / `admin123`)  происходит при первом запуске.
 
 ---
 </details>
 
 <details>
-<summary><a name="file-cart-js"></a><b> cart.js</b>  Логика корзины</summary>
+<summary><a name="cart-js"></a><b> cart.js</b>  логика корзины</summary>
 
 ---
 
-Управление содержимым корзины: рендер таблицы, кнопки `+`/`−`, удаление, пересчёт итога.
+Управление содержимым корзины: рендер таблицы, кнопки `+`/``, удаление, пересчёт итога.
 
 ```js
 function updateQuantity(productId, delta) {
-    let cart = getCart();
-    const item = cart.find(i => i.id === productId);
+    let cart = getCart()
+    const item = cart.find(i => i.id === productId)
     if (item) {
-        item.quantity += delta;
-        if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId);
-        saveCart(cart);
-        renderCart();
-        updateBadges();
+        item.quantity += delta
+        if (item.quantity <= 0) cart = cart.filter(i => i.id !== productId)
+        saveCart(cart)
+        renderCart()
+        updateBadges()
     }
 }
 
 function renderCart() {
-    const cart     = getCart();
-    const tbody    = document.getElementById('cartTableBody');
-    const emptyMsg = document.getElementById('emptyCart');
-
+    const cart  = getCart()
+    const tbody = document.getElementById('cartTableBody')
     if (!cart.length) {
-        emptyMsg.style.display = 'block';
-        return;
+        document.getElementById('emptyCart').style.display = 'block'
+        return
     }
     tbody.innerHTML = cart.map((item, i) => {
-        const p   = products.find(p => p.id === item.id);
-        const sum = p.price * item.quantity;
+        const p   = products.find(p => p.id === item.id)
+        const sum = p.price * item.quantity
         return `<tr>
             <td>${i+1}</td><td>${p.name}</td>
             <td>${p.price.toLocaleString('ru-RU')} ₽</td>
             <td>
-                <button onclick="updateQuantity(${p.id},-1)">−</button>
+                <button onclick="updateQuantity(${p.id},-1)"></button>
                 <span>${item.quantity}</span>
                 <button onclick="updateQuantity(${p.id},+1)">+</button>
             </td>
             <td>${sum.toLocaleString('ru-RU')} ₽</td>
-            <td><button onclick="removeFromCart(${p.id})">🗑️</button></td>
-        </tr>`;
-    }).join('');
+            <td><button onclick="removeFromCart(${p.id})"></button></td>
+        </tr>`
+    }).join('')
     document.querySelector('.cart-total').textContent =
-        'Итого: ' + calculateTotal().toLocaleString('ru-RU') + ' ₽';
+        'Итого: ' + calculateTotal().toLocaleString('ru-RU') + ' ₽'
 }
 ```
 
@@ -513,46 +461,46 @@ function renderCart() {
 </details>
 
 <details>
-<summary><a name="file-favorites-js"></a><b> favorites.js</b>  Логика избранного</summary>
+<summary><a name="favorites-js"></a><b> favorites.js</b>  логика избранного</summary>
 
 ---
 
-Отображает сетку товаров из избранного. При пустом списке — заглушка. Использует `createProductCard` из `common.js`.
+Отображает сетку товаров из избранного. При пустом списке  заглушка. Использует `createProductCard` из `common.js`.
 
 ```js
 function renderFavorites() {
-    const favorites        = getFavorites();
-    const favoriteProducts = products.filter(p => favorites.includes(p.id));
-    const grid             = document.getElementById('favoritesGrid');
-    const emptyMsg         = document.getElementById('emptyFavorites');
+    const favorites        = getFavorites()
+    const favoriteProducts = products.filter(p => favorites.includes(p.id))
+    const grid             = document.getElementById('favoritesGrid')
+    const emptyMsg         = document.getElementById('emptyFavorites')
 
     if (!favoriteProducts.length) {
-        grid.innerHTML     = '';
-        emptyMsg.style.display = 'block';
-        return;
+        grid.innerHTML         = ''
+        emptyMsg.style.display = 'block'
+        return
     }
-    emptyMsg.style.display = 'none';
-    grid.innerHTML = favoriteProducts.map(p => createProductCard(p)).join('');
+    emptyMsg.style.display = 'none'
+    grid.innerHTML = favoriteProducts.map(p => createProductCard(p)).join('')
 }
 
-document.addEventListener('DOMContentLoaded', renderFavorites);
+document.addEventListener('DOMContentLoaded', renderFavorites)
 ```
 
 ---
 </details>
 
 <details>
-<summary><a name="file-checkout-js"></a><b> checkout.js</b>  Оформление заказа</summary>
+<summary><a name="checkout-js"></a><b> checkout.js</b>  оформление заказа</summary>
 
 ---
 
-Отображает сводку корзины, маску телефона, обработку формы. После отправки — сохраняет заказ в `localStorage`, очищает корзину.
+Отображает сводку корзины, маску телефона, обработку формы. После отправки  сохраняет заказ в `localStorage`, очищает корзину.
 
 ```js
 function handleCheckout(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const cart     = getCart();
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const cart     = getCart()
 
     const order = {
         id:      Date.now(),
@@ -562,35 +510,31 @@ function handleCheckout(e) {
         phone:   formData.get('phone'),
         address: formData.get('address'),
         items:   cart.map(item => {
-            const p = products.find(p => p.id === item.id);
-            return { id: p.id, name: p.name, image: p.image, price: p.price, quantity: item.quantity };
+            const p = products.find(p => p.id === item.id)
+            return { id: p.id, name: p.name, image: p.image, price: p.price, quantity: item.quantity }
         }),
         total: calculateTotal(),
-    };
+    }
 
-    // Сохранение в историю заказов
-    const orders = getOrderHistory();
-    orders.push(order);
-    localStorage.setItem('orderHistory', JSON.stringify(orders));
-
-    // Очистка корзины
-    saveCart([]);
-    updateBadges();
-
-    window.location.href = 'profile.html';
+    const orders = getOrderHistory()
+    orders.push(order)
+    localStorage.setItem('orderHistory', JSON.stringify(orders))
+    saveCart([])
+    updateBadges()
+    window.location.href = 'profile.html'
 }
 
 // Маска для поля телефона: +7 (XXX) XXX-XX-XX
 function formatPhoneNumber(input) {
-    let v = input.value.replace(/\D/g, '');
-    if (v[0] === '8') v = '7' + v.slice(1);
-    if (v[0] !== '7') v = '7' + v;
-    let fmt = '+7';
-    if (v.length > 1) fmt += ' (' + v.slice(1, 4);
-    if (v.length >= 5) fmt += ') ' + v.slice(4, 7);
-    if (v.length >= 8) fmt += '-' + v.slice(7, 9);
-    if (v.length >= 10) fmt += '-' + v.slice(9, 11);
-    input.value = fmt;
+    let v = input.value.replace(/\D/g, '')
+    if (v[0] === '8') v = '7' + v.slice(1)
+    if (v[0] !== '7') v = '7' + v
+    let fmt = '+7'
+    if (v.length > 1)  fmt += ' (' + v.slice(1, 4)
+    if (v.length >= 5) fmt += ') ' + v.slice(4, 7)
+    if (v.length >= 8) fmt += '-' + v.slice(7, 9)
+    if (v.length >= 10) fmt += '-' + v.slice(9, 11)
+    input.value = fmt
 }
 ```
 
@@ -598,7 +542,7 @@ function formatPhoneNumber(input) {
 </details>
 
 <details>
-<summary><a name="file-profile-js"></a><b> profile.js</b>  Личный кабинет</summary>
+<summary><a name="profile-js"></a><b> profile.js</b>  личный кабинет</summary>
 
 ---
 
@@ -606,18 +550,18 @@ function formatPhoneNumber(input) {
 
 ```js
 function renderOrderHistory() {
-    const orders      = getOrderHistory();
-    const container   = document.getElementById('orderHistory');
+    const orders    = getOrderHistory()
+    const container = document.getElementById('orderHistory')
     if (!orders.length) {
-        container.innerHTML = '<p class="empty-message">История заказов пуста</p>';
-        return;
+        container.innerHTML = '<p class="empty-message">История заказов пуста</p>'
+        return
     }
     container.innerHTML = [...orders].reverse().map(order => `
         <div class="order-item">
             <div class="order-header">
                 <h4>Заказ #${order.id}</h4>
                 <span class="order-date">${order.date}</span>
-                <span class="order-status ${getStatusClass(order.status)}">${order.status || 'Новый'}</span>
+                <span class="order-status">${order.status || 'Новый'}</span>
             </div>
             <table class="order-table">
                 <thead><tr><th>№</th><th>Товар</th><th>Цена</th><th>Кол-во</th><th>Сумма</th></tr></thead>
@@ -628,14 +572,14 @@ function renderOrderHistory() {
                             <td>${item.image} ${item.name}</td>
                             <td>${item.price.toLocaleString('ru-RU')} ₽</td>
                             <td>${item.quantity}</td>
-                            <td>${(item.price*item.quantity).toLocaleString('ru-RU')} ₽</td>
+                            <td>${(item.price * item.quantity).toLocaleString('ru-RU')} ₽</td>
                         </tr>
                     `).join('')}
                 </tbody>
             </table>
             <div class="order-total">Итого: <strong>${order.total.toLocaleString('ru-RU')} ₽</strong></div>
         </div>
-    `).join('');
+    `).join('')
 }
 ```
 
@@ -643,7 +587,7 @@ function renderOrderHistory() {
 </details>
 
 <details>
-<summary><a name="file-admin-js"></a><b> admin.js / admin-*.js</b>  Скрипты администратора</summary>
+<summary><a name="admin-js"></a><b> admin.js / admin-*.js</b>  скрипты администратора</summary>
 
 ---
 
@@ -658,62 +602,51 @@ function renderOrderHistory() {
 | `admin-categories.js` | Таблицы по категориям |
 
 ```js
-// admin.js — сводная статистика
+// admin.js  сводная статистика
 function renderAdminStats() {
-    const stats   = getProductStats();
-    const orders  = JSON.parse(localStorage.getItem('orderHistory') || '[]');
-
-    let totalOrdered = 0, totalPurchased = 0, totalInCart = 0, totalInFavorites = 0;
+    const stats  = getProductStats()
+    const orders = JSON.parse(localStorage.getItem('orderHistory') || '[]')
+    let totalOrdered = 0, totalInCart = 0, totalInFavorites = 0
 
     orders.forEach(order => {
-        const status = order.status || 'Новый';
-        order.items.forEach(item => {
-            if (status === 'Новый' || status === 'В обработке')     totalOrdered   += item.quantity;
-            if (status === 'Подтверждён' || status === 'Доставлен') totalPurchased += item.quantity;
-        });
-    });
+        order.items.forEach(item => { totalOrdered += item.quantity })
+    })
     Object.values(stats).forEach(s => {
-        totalInCart      += s.inCart      || 0;
-        totalInFavorites += s.inFavorites || 0;
-    });
+        totalInCart      += s.inCart      || 0
+        totalInFavorites += s.inFavorites || 0
+    })
 
-    document.getElementById('totalProducts').textContent    = products.length;
-    document.getElementById('totalOrdered').textContent     = totalOrdered;
-    document.getElementById('totalPurchased').textContent   = totalPurchased;
-    document.getElementById('totalInCart').textContent      = totalInCart;
-    document.getElementById('totalInFavorites').textContent = totalInFavorites;
+    document.getElementById('totalProducts').textContent    = products.length
+    document.getElementById('totalOrdered').textContent     = totalOrdered
+    document.getElementById('totalInCart').textContent      = totalInCart
+    document.getElementById('totalInFavorites').textContent = totalInFavorites
 }
 
-// admin-products.js — таблица товаров
+// admin-products.js  таблица товаров
 function renderProductsTable() {
-    const rows = products.map((p, i) => `
-        <tr>
-            <td>${i+1}</td><td>${p.image}</td><td>${p.name}</td>
-            <td>${p.category}</td>
-            <td>${p.price.toLocaleString('ru-RU')} ₽</td>
-            <td>${p.stock}</td>
-        </tr>
-    `).join('');
-    document.getElementById('productsTableBody').innerHTML = rows;
+    document.getElementById('productsTableBody').innerHTML =
+        products.map((p, i) => `
+            <tr>
+                <td>${i+1}</td><td>${p.image}</td><td>${p.name}</td>
+                <td>${p.category}</td>
+                <td>${p.price.toLocaleString('ru-RU')} ₽</td>
+                <td>${p.stock}</td>
+            </tr>
+        `).join('')
 }
 ```
 
 ---
 </details>
 
----
-
-### CSS стили
-
 <details>
-<summary><a name="file-styles-css"></a><b> styles.css</b>  Единый файл стилей</summary>
+<summary><a name="styles-css"></a><b> styles.css</b>  единый файл стилей</summary>
 
 ---
 
 Один CSS-файл для всего приложения (~800 строк). Mobile-first, breakpoint 768px.
 
 ```css
-/* CSS-переменные */
 :root {
     --primary:   #3b82f6;
     --success:   #10b981;
@@ -726,7 +659,6 @@ function renderProductsTable() {
     --shadow:    0 1px 3px rgba(0,0,0,.1);
 }
 
-/* Карточка товара */
 .product-card {
     background:    var(--card-bg);
     border-radius: 12px;
@@ -739,12 +671,6 @@ function renderProductsTable() {
     box-shadow: 0 8px 24px rgba(0,0,0,.12);
 }
 
-/* Кнопки */
-.btn            { padding: .5rem 1rem; border-radius: 8px; cursor: pointer; transition: opacity .2s; }
-.btn-primary    { background: var(--primary); color: #fff; }
-.btn-primary:hover { opacity: .85; }
-
-/* Адаптивная сетка */
 .product-grid {
     display:               grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -762,46 +688,170 @@ function renderProductsTable() {
 
 ---
 
-##  Технологии
-
-| Технология | Версия | Использование |
-|-----------|--------|---------------|
-| HTML5 |  | Структура всех страниц |
-| CSS3 |  | Стили, анимации, адаптивность |
-| JavaScript | ES6+ | Вся логика приложения |
-| localStorage API |  | Хранение данных без сервера |
-
----
-
-##  Запуск
+## Быстрый старт
 
 Никаких зависимостей и сборки не требуется.
 
-```bash
-# 1. Клонировать репозиторий
-git clone https://github.com/Comanda7/react_mag1.git
+### 1. Клонируйте репозиторий
 
-# 2. Открыть папку
+```bash
+git clone https://github.com/Comanda7/react_mag1.git
 cd react_mag1
 ```
 
-Затем открыть `index.html` в любом браузере  и готово.
+### 2. Откройте в браузере
+
+Откройте файл `index.html` напрямую в любом браузере  и готово.
 
 > Навигация между страницами работает через обычные HTML-ссылки (`<a href="...">`).
 
+### 3. (Опционально) Live Server в VS Code
+
+Установите расширение **Live Server** и нажмите **Go Live**  страница будет перезагружаться при каждом сохранении файла.
+
 ---
 
-##  Данные
+## Функционал
+
+### Каталог (`index.html`)
+- Список 60 товаров: телефоны, ноутбуки, аксессуары
+- Фильтрация по категории
+- Поиск по названию в реальном времени
+- Сортировка по цене ( / )
+- Пагинация (8 товаров / страница)
+- Кнопки  Избранное и  Корзина с badge-счётчиками в шапке
+
+### Корзина (`cart.html`)
+- Таблица товаров с управлением количеством (+/)
+- Удаление позиций
+- Итоговая сумма
+- Оформление заказа  переход в личный кабинет
+
+### Избранное (`favorites.html`)
+- Сетка карточек избранных товаров
+- При пустом списке  заглушка
+
+### Личный кабинет (`profile.html`)
+- История заказов с деталями по каждому
+- Список избранного
+- Текущая корзина
+
+### Статичные страницы
+- `about.html`  О компании + статистика
+- `contacts.html`  Контакты + форма обратной связи
+
+### Админ-панель
+| Файл | Описание |
+|------|----------|
+| `admin.html` | Статистика: товары, корзины, избранное |
+| `admin-products.html` | Таблица всех товаров |
+| `admin-orders.html` | История заказов |
+| `admin-categories.html` | 3 отдельные таблицы по категориям |
+
+---
+
+## Архитектурные решения
+
+| Паттерн              | Реализация                                   |
+|----------------------|----------------------------------------------|
+| Хранилище данных     | localStorage (без сервера и БД)              |
+| Модульность          | Отдельный `.js` файл на каждую страницу      |
+| Переиспользование    | Общие функции в `common.js` и `data.js`      |
+| Данные               | Центральный массив `products` в `data.js`    |
+| Авторизация          | IIFE-паттерн в `auth.js`, инжекция модала    |
+| Синхронизация вкладок| `window.addEventListener('storage', ...)`   |
+
+---
+
+## Данные
 
 - **60 товаров**  по 20 в каждой из трёх категорий
-- Данные генерируются при первом запуске и сохраняются в `localStorage`
+- Все данные хранятся **только в localStorage** браузера
 - Полная синхронизация между всеми страницами без сервера
 - Данные сохраняются между сессиями браузера
 
 ---
 
-<div align="center">
+## Как залить проект на GitHub
 
-**TechStore** &nbsp;&nbsp; 2025 &nbsp;&nbsp; Vanilla JS
+### 1. Первая загрузка (новый репозиторий)
 
-</div>
+```bash
+# 1. Перейти в папку проекта
+cd path/to/Inter_mag1
+
+# 2. Инициализировать git-репозиторий
+git init
+
+# 3. Добавить все файлы в индекс
+git add .
+
+# 4. Сделать первый коммит
+git commit -m "first commit"
+
+# 5. Переименовать ветку в main
+git branch -M main
+
+# 6. Привязать удалённый репозиторий (создать его заранее на github.com)
+git remote add origin https://github.com/Comanda7/react_mag1.git
+
+# 7. Отправить на GitHub
+git push -u origin main
+```
+
+### 2. Последующие обновления
+
+```bash
+# Посмотреть изменённые файлы
+git status
+
+# Добавить все изменения
+git add .
+
+# Сделать коммит с описанием изменений
+git commit -m "fix: описание что изменилось"
+
+# Отправить на GitHub
+git push
+```
+
+### 3. Полезные команды
+
+```bash
+git log --oneline        # история коммитов
+git diff                 # что изменилось (до git add)
+git diff --staged        # что изменилось (после git add)
+git remote -v            # проверить привязанный репозиторий
+git branch               # список веток
+git pull                 # получить изменения с GitHub
+```
+
+### 4. Соглашение по коммит-сообщениям
+
+```
+feat:     добавить новый компонент
+fix:      исправить баг в корзине
+style:    обновить стили хедера
+refactor: переработать логику фильтрации
+docs:     обновить README
+```
+
+> **Репозиторий проекта:** https://github.com/Comanda7/react_mag1
+
+---
+
+## Рабочий процесс в VS Code (рекомендованные расширения)
+
+```
+Live Server         запуск страниц с авто-перезагрузкой
+ESLint              подсветка ошибок JS
+Prettier            форматирование кода
+Auto Rename Tag     синхронное переименование HTML-тегов
+GitLens             история git
+```
+
+---
+
+## Лицензия
+
+MIT  используйте свободно в учебных целях.
