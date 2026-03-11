@@ -68,7 +68,7 @@ function handleCheckout(e) { // Отправка формы
     const cart = getCart(); // Корзина
     
     // Проверка наличия товаров на складе
-    const currentProducts = JSON.parse(localStorage.getItem('products') || JSON.stringify(products)); // Товары
+    const currentProducts = safeJsonParse(localStorage.getItem('products'), products); // Товары
     const insufficientStock = []; // Недостаток
     
     for (const item of cart) { // Перебор корзины

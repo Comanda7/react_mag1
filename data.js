@@ -81,20 +81,24 @@ function initProductStats() { // Инициализация статистики
     return stats; // Возвращаем объект
 } // Конец initProductStats
 // Получение данных из localStorage // Заголовок блока
+function safeJsonParse(raw, fallback) { // Безопасный разбор JSON
+    try { const r = raw ? JSON.parse(raw) : fallback; return (r !== null && r !== undefined) ? r : fallback; } catch (e) { return fallback; }
+} // Конец safeJsonParse
+// Пустая строка
 function getFavorites() { // Получить избранное
-    return JSON.parse(localStorage.getItem('favorites')) || []; // Возврат массива
+    const v = safeJsonParse(localStorage.getItem('favorites'), []); return Array.isArray(v) ? v : [];
 } // Конец getFavorites
 // Пустая строка
 function getCart() { // Получить корзину
-    return JSON.parse(localStorage.getItem('cart')) || []; // Возврат массива
+    const v = safeJsonParse(localStorage.getItem('cart'), []); return Array.isArray(v) ? v : [];
 } // Конец getCart
 // Пустая строка
 function getOrderHistory() { // Получить историю заказов
-    return JSON.parse(localStorage.getItem('orderHistory')) || []; // Возврат массива
+    const v = safeJsonParse(localStorage.getItem('orderHistory'), []); return Array.isArray(v) ? v : [];
 } // Конец getOrderHistory
 // Пустая строка
 function getProductStats() { // Получить статистику
-    return JSON.parse(localStorage.getItem('productStats')) || initProductStats(); // Возврат статистики
+    return safeJsonParse(localStorage.getItem('productStats'), null) || initProductStats(); // Возврат статистики
 } // Конец getProductStats
 // Сохранение данных в localStorage // Заголовок блока
 function saveFavorites(favorites) { // Сохранить избранное
@@ -170,7 +174,7 @@ function createProductCard(product) { // Создание карточки
     const isInCart = cart.some(item => item.id === product.id); // Флаг корзины
     // Пустая строка
     // Получаем актуальное количество на складе // Комментарий
-    const currentProducts = JSON.parse(localStorage.getItem('products') || JSON.stringify(products)); // Текущие товары
+    const currentProducts = safeJsonParse(localStorage.getItem('products'), products); // Текущие товары
     const currentProduct = currentProducts.find(p => p.id === product.id); // Текущий товар
     const stock = currentProduct ? (currentProduct.stock || 0) : (product.stock || 0); // Остаток
     const outOfStock = stock === 0; // Флаг отсутствия

@@ -1,8 +1,8 @@
 // Админ панель - общая статистика
 function renderAdminStats() { // Рендер общей статистики
     const stats = getProductStats(); // Получаем статистику товаров
-    const currentProducts = JSON.parse(localStorage.getItem('products') || JSON.stringify(products)); // Текущие товары
-    const orders = JSON.parse(localStorage.getItem('orderHistory') || '[]'); // История заказов
+    const currentProducts = safeJsonParse(localStorage.getItem('products'), products); // Текущие товары
+    const orders = safeJsonParse(localStorage.getItem('orderHistory'), []); // История заказов
     
     document.getElementById('totalProducts').textContent = products.length; // Всего товаров
     
